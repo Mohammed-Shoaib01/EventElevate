@@ -10,8 +10,60 @@ import { useState, useEffect } from "react";
 import { FirebaseAuth } from "./firebaseConfig";
 import HomePage from "./app/screen/HomePage";
 import Signup from "./app/screen/Auth/Signup";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
+
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import DrawerItems from "./Constants/constants";
 
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
+const MainScreen = () => {
+  return (
+    <Drawer.Navigator
+      drawerType="front"
+      initialRouteName="Login Screen"
+      screenOptions={{
+        activeTintColor: "#e91e63",
+        itemStyle: { marginVertical: 10 },
+      }}
+    >
+      {DrawerItems.map((drawer) => (
+        <Drawer.Screen
+          key={drawer.name}
+          name={drawer.name}
+          options={{
+            drawerIcon: ({ focused }) =>
+              drawer.iconType === "Material" ? (
+                <MaterialCommunityIcons
+                  name={drawer.iconName}
+                  size={24}
+                  color={focused ? "#e91e63" : "black"}
+                />
+              ) : drawer.iconType === "Feather" ? (
+                <Feather
+                  name={drawer.iconName}
+                  size={24}
+                  color={focused ? "#e91e63" : "black"}
+                />
+              ) : (
+                <></>
+              ),
+          }}
+          component={
+            //drawer.name==='LoginScreen' ? LoginScreen
+            drawer.name === "HomePage"
+              ? HomePage
+              : drawer.name == "Profile"
+              ? Login
+              : WelcomeScreen
+          }
+        />
+      ))}
+    </Drawer.Navigator>
+  );
+};
 
 export default function App() {
   const auth = FirebaseAuth;
@@ -33,7 +85,11 @@ export default function App() {
             <Stack.Screen name="Signup" component={Signup} />
           </>
         ) : (
-          <Stack.Screen name="HomePage" component={HomePage} />
+          <Stack.Screen
+            name="EventElevate"
+            component={MainScreen}
+            options={{ headerShown: false }}
+          />
         )}
       </Stack.Navigator>
     </NavigationContainer>
