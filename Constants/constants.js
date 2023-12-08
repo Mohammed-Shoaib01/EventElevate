@@ -15,7 +15,7 @@ export default [
     iconName: "user",
   },
   {
-    name: "WelcomeScreen",
+    name: "MyEvents",
     iconType: "Material",
     iconName: "face-man-profile",
   },

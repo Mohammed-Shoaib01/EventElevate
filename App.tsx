@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 import { onAuthStateChanged, User } from "firebase/auth";
 
 import WelcomeScreen from "./app/screen/Auth/WelcomeScreen";
@@ -12,6 +12,7 @@ import HomePage from "./app/screen/HomePage";
 import Signup from "./app/screen/Auth/Signup";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerItems from "./Constants/constants";
@@ -21,6 +22,11 @@ import EventDetails from "./app/screen/NestedPages/EventDetails";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
+
+import { LogBox } from "react-native";
+import EventForm from "./app/screen/NestedPages/EventForm";
+LogBox.ignoreLogs(["Warning: ..."]); // Ignore log notification by message
+LogBox.ignoreAllLogs(); //Ignore all log notifications
 
 const MainScreen = () => {
   return (
@@ -37,6 +43,17 @@ const MainScreen = () => {
           key={drawer.name}
           name={drawer.name}
           options={{
+            headerRight: () => (
+              <AntDesign
+                name="bells"
+                size={24}
+                color="black"
+                style={{ paddingRight: 20 }}
+                onPress={() => {
+                  console.log("bell pressed");
+                }}
+              />
+            ),
             drawerIcon: ({ focused }) =>
               drawer.iconType === "Material" ? (
                 <MaterialCommunityIcons
@@ -95,6 +112,7 @@ export default function App() {
               options={{ headerShown: false }}
             />
             <Stack.Screen name="EventDetails" component={EventDetails} />
+            <Stack.Screen name="EventForm" component={EventForm} />
           </>
         )}
       </Stack.Navigator>
