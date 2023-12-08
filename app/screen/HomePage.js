@@ -8,6 +8,8 @@ import {
   Image,
   View,
 } from "react-native";
+import { signOut } from "firebase/auth";
+import { FirebaseAuth } from "../../firebaseConfig.js";
 
 function HomePage({ navigation }) {
   return (
@@ -22,6 +24,14 @@ function HomePage({ navigation }) {
           source={require("../assets/Logo.png")}
         />
       </View>
+      <TouchableHighlight>
+        <Button
+          color="#fc5c65"
+          title="Signout"
+          style={styles.loginButton}
+          onPress={() => signOut(FirebaseAuth)}
+        />
+      </TouchableHighlight>
     </ImageBackground>
   );
 }

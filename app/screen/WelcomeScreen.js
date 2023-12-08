@@ -35,7 +35,7 @@ function WelcomeScreen({ navigation }) {
           color="#4ecdc4"
           title="Register"
           style={styles.registerButton}
-          onPress={() => Alert.alert("Register Page", "Will Figureout Later")}
+          onPress={() => navigation.navigate("Signup")}
         />
       </TouchableHighlight>
     </ImageBackground>

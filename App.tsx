@@ -9,6 +9,7 @@ import Login from "./app/screen/Login";
 import { useState, useEffect } from "react";
 import { FirebaseAuth } from "./firebaseConfig";
 import HomePage from "./app/screen/HomePage";
+import Signup from "./app/screen/Signup";
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,7 @@ export default function App() {
           <>
             <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
             <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Signup" component={Signup} />
           </>
         ) : (
           <Stack.Screen name="HomePage" component={HomePage} />
