@@ -6,7 +6,7 @@ import {
   TextInput,
   StyleSheet,
 } from "react-native";
-import { FirebaseAuth } from "../../firebaseConfig.js";
+import { FirebaseAuth } from "../../../firebaseConfig.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 // import { SQLite } from "react-native-sqlite-storage"

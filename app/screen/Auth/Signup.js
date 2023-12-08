@@ -6,7 +6,7 @@ import {
   TextInput,
   StyleSheet,
 } from "react-native";
-import { FirebaseAuth, FirebaseDB } from "../../firebaseConfig";
+import { FirebaseAuth, FirebaseDB } from "../../../firebaseConfig";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 

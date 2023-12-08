@@ -13,13 +13,13 @@ function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
       style={styles.background}
-      source={require("../assets/WPImage.jpg")}
+      source={require("../../assets/WPImage.jpg")}
     >
       <View style={{ alignItems: "center", height: "100%", width: "100%" }}>
         <Image
           resizeMode="contain"
           style={styles.logo}
-          source={require("../assets/Logo.png")}
+          source={require("../../assets/Logo.png")}
         />
       </View>
       <TouchableHighlight>

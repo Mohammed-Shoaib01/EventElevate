@@ -2,14 +2,14 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { onAuthStateChanged, User } from "firebase/auth";
 
-import WelcomeScreen from "./app/screen/WelcomeScreen";
+import WelcomeScreen from "./app/screen/Auth/WelcomeScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Login from "./app/screen/Login";
+import Login from "./app/screen/Auth/Login";
 import { useState, useEffect } from "react";
 import { FirebaseAuth } from "./firebaseConfig";
 import HomePage from "./app/screen/HomePage";
-import Signup from "./app/screen/Signup";
+import Signup from "./app/screen/Auth/Signup";
 
 const Stack = createNativeStackNavigator();
 
