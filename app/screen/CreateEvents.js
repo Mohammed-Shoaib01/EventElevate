@@ -29,7 +29,7 @@ export default function CreateEvents({ navigation }) {
   let displayName = undefined;
   const auth = getAuth();
   let user = auth.currentUser;
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState();
   const [docSnapData, setdocSnapData] = useState(null);
   const [optionList, setOptionList] = useState([
     { Genre: "...", Image: "...", Location: "...", Title: "..." },
@@ -40,7 +40,6 @@ export default function CreateEvents({ navigation }) {
   // const filteredData = optionList.filter((item) => {
   //   return item.name.toLowerCase().includes(searchText.toLowerCase());
   // });
-
   useEffect(() => {
     async function fetchData() {
       const docRef = doc(FirebaseDB, "users", user.uid);
@@ -55,7 +54,23 @@ export default function CreateEvents({ navigation }) {
     }
 
     fetchData();
-  }, []);
+  }, [navigation]);
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const docRef = doc(FirebaseDB, "users", user.uid);
+  //     const docSnap = await getDoc(docRef);
+  //     if (docSnap.exists()) {
+  //       console.log("Document data User:", docSnap.data());
+  //       setdocSnapData(docSnap.data());
+  //     } else {
+  //       // docSnap.data() will be undefined in this case
+  //       console.log("No such document!");
+  //     }
+  //   }
+
+  //   fetchData();
+  // }, []);
   useEffect(() => {
     async function fetchEventsData() {
       // const querySnapshot = await getDocs(collection(FirebaseDB, "Events"));
@@ -78,6 +93,7 @@ export default function CreateEvents({ navigation }) {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           console.log("Document data Event:", docSnap.data());
+
           tempList.push(docSnap.data());
         } else {
           // docSnap.data() will be undefined in this case
@@ -89,8 +105,27 @@ export default function CreateEvents({ navigation }) {
     fetchEventsData();
   }, docSnapData);
 
+  const searchFilteredData = searchText
+    ? optionList.filter((x) =>
+        x.Location.toLowerCase().includes(searchText.toLowerCase())
+      )
+    : optionList;
+
   return (
     <View>
+      <View style={styles.formContent}>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.inputs}
+            placeholder="Search for an event..."
+            underlineColorAndroid="transparent"
+            onChangeText={(text) => {
+              setSearchText(text);
+            }}
+            value={searchText}
+          />
+        </View>
+      </View>
       <FlatList
         data={optionList}
         keyExtractor={(item) => {
@@ -106,7 +141,7 @@ export default function CreateEvents({ navigation }) {
                 <CardButton onPress={() => {}} title="Share" color="#FEB557" />
                 <CardButton
                   onPress={() => {
-                    navigation.navigate("EventDetails", item);
+                    navigation.navigate("EventDetailsOrg", item);
                   }}
                   title="Details"
                   color="#FEB557"
@@ -117,7 +152,7 @@ export default function CreateEvents({ navigation }) {
         }}
       />
       <TouchableOpacity
-        style={{ flex: 0, alignSelf: "flex-end", margin: 20 }}
+        style={{ flex: 0, alignSelf: "flex-end", top: -70, left: -30 }}
         onPress={() => {
           navigation.navigate("EventForm");
         }}
@@ -132,3 +167,86 @@ export default function CreateEvents({ navigation }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#EBEBEB",
+  },
+  formContent: {
+    flexDirection: "row",
+    marginTop: 30,
+  },
+  inputContainer: {
+    borderBottomColor: "#F5FCFF",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 30,
+    borderBottomWidth: 1,
+    height: 45,
+    flexDirection: "row",
+    alignItems: "center",
+    flex: 1,
+    margin: 10,
+  },
+  icon: {
+    width: 30,
+    height: 30,
+  },
+  iconBtnSearch: {
+    alignSelf: "center",
+  },
+  inputs: {
+    height: 45,
+    marginLeft: 16,
+    borderBottomColor: "#FFFFFF",
+    flex: 1,
+  },
+  inputIcon: {
+    marginLeft: 15,
+    justifyContent: "center",
+  },
+  notificationList: {
+    marginTop: 20,
+    padding: 10,
+  },
+  card: {
+    height: null,
+    paddingTop: 3,
+    paddingBottom: 10,
+    marginTop: 5,
+    backgroundColor: "#FFFFFF",
+    flexDirection: "column",
+    borderTopWidth: 40,
+    marginBottom: 20,
+  },
+  cardContent: {
+    flexDirection: "column",
+    marginLeft: 10,
+  },
+  imageContent: {
+    marginTop: -40,
+  },
+  image: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+  },
+  name: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginLeft: 10,
+    alignSelf: "auto",
+  },
+  occ: {
+    fontSize: 16,
+    marginLeft: 10,
+    alignSelf: "auto",
+  },
+  btnColor: {
+    padding: 10,
+    borderRadius: 40,
+    marginHorizontal: 3,
+    backgroundColor: "#eee",
+    marginTop: 5,
+  },
+});

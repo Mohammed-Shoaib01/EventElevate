@@ -86,7 +86,8 @@ import {
 import { FirebaseDB } from "../../firebaseConfig";
 
 export default function HomePage({ navigation }) {
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState();
+
   const [optionList, setOptionList] = useState([
     { Genre: "...", Image: "...", Location: "...", Title: "..." },
   ]);
@@ -104,7 +105,9 @@ export default function HomePage({ navigation }) {
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         console.log(doc.id, " => ", doc.data());
-        tempList.push(doc.data());
+        const dict = doc.data();
+        dict["id"] = doc.id;
+        tempList.push(dict);
       });
       console.log(tempList);
       setOptionList(tempList);
@@ -112,10 +115,31 @@ export default function HomePage({ navigation }) {
     fetchData();
   }, []);
 
+  //filtering
+  const searchFilteredData = searchText
+    ? optionList.filter((x) =>
+        x.Location.toLowerCase().includes(searchText.toLowerCase())
+      )
+    : optionList;
+
   return (
     <View>
+      <View style={styles.formContent}>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.inputs}
+            placeholder="Search for an event..."
+            underlineColorAndroid="transparent"
+            onChangeText={(text) => {
+              setSearchText(text);
+            }}
+            value={searchText}
+          />
+        </View>
+      </View>
+
       <FlatList
-        data={optionList}
+        data={searchFilteredData}
         keyExtractor={(item) => {
           return item.Title;
         }}

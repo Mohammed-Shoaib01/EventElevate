@@ -6,9 +6,28 @@ import {
   View,
   SafeAreaView,
   Image,
+  Touchable,
+  TouchableOpacity,
+  Alert,
 } from "react-native";
+import { getAuth } from "firebase/auth";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { FirebaseDB } from "../../../firebaseConfig";
 
 function EventDetails({ Navigation, route }) {
+  let displayName = undefined;
+  const auth = getAuth();
+  let user = auth.currentUser;
+
+  const register = async (id) => {
+    const userRef = doc(FirebaseDB, "Events", id);
+
+    await updateDoc(userRef, {
+      participants: arrayUnion(user.uid),
+    });
+    Alert.alert("registered!");
+  };
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -18,6 +37,14 @@ function EventDetails({ Navigation, route }) {
             style={styles.eventLogo}
             source={{ uri: route.params.Image }}
           />
+          <TouchableOpacity
+            onPress={() => {
+              register(route.params.id);
+            }}
+            style={{ alignItems: "flex-end", padding: 25 }}
+          >
+            <Text style={{ fontSize: 20, color: "red" }}>Register </Text>
+          </TouchableOpacity>
           <View style={styles.baseText}>
             <Text style={styles.eventHeading}>{route.params.Title}</Text>
             <Text style={styles.eventGenre}>{route.params.Location}</Text>

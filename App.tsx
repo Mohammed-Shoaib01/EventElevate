@@ -25,6 +25,7 @@ const Drawer = createDrawerNavigator();
 
 import { LogBox } from "react-native";
 import EventForm from "./app/screen/NestedPages/EventForm";
+import EventDetailsOrg from "./app/screen/NestedPages/EventDetailsOrg";
 LogBox.ignoreLogs(["Warning: ..."]); // Ignore log notification by message
 LogBox.ignoreAllLogs(); //Ignore all log notifications
 
@@ -113,6 +114,7 @@ export default function App() {
             />
             <Stack.Screen name="EventDetails" component={EventDetails} />
             <Stack.Screen name="EventForm" component={EventForm} />
+            <Stack.Screen name="EventDetailsOrg" component={EventDetailsOrg} />
           </>
         )}
       </Stack.Navigator>
