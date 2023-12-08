@@ -93,8 +93,9 @@ export default function CreateEvents({ navigation }) {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           console.log("Document data Event:", docSnap.data());
-
-          tempList.push(docSnap.data());
+          const dict = docSnap.data();
+          dict["id"] = docSnapData.EventsOrganised[i].trim();
+          tempList.push(dict);
         } else {
           // docSnap.data() will be undefined in this case
           console.log("No such document!");
@@ -112,7 +113,7 @@ export default function CreateEvents({ navigation }) {
     : optionList;
 
   return (
-    <View>
+    <ScrollView>
       <View style={styles.formContent}>
         <View style={styles.inputContainer}>
           <TextInput
@@ -127,7 +128,7 @@ export default function CreateEvents({ navigation }) {
         </View>
       </View>
       <FlatList
-        data={optionList}
+        data={searchFilteredData}
         keyExtractor={(item) => {
           return item.Title;
         }}
@@ -152,7 +153,7 @@ export default function CreateEvents({ navigation }) {
         }}
       />
       <TouchableOpacity
-        style={{ flex: 0, alignSelf: "flex-end", top: -70, left: -30 }}
+        style={{ flex: 0, alignSelf: "flex-start", margin: 20 }}
         onPress={() => {
           navigation.navigate("EventForm");
         }}
@@ -164,7 +165,7 @@ export default function CreateEvents({ navigation }) {
           <Text style={{ color: "white", fontWeight: "bold" }}>Add Event</Text>
         </View>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }
 

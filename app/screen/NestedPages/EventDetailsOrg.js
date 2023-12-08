@@ -6,9 +6,10 @@ import {
   View,
   SafeAreaView,
   Image,
+  TouchableOpacity,
 } from "react-native";
 
-function EventDetailsOrg({ Navigation, route }) {
+function EventDetailsOrg({ navigation, route }) {
   return (
     <SafeAreaView>
       <ScrollView>
@@ -18,6 +19,16 @@ function EventDetailsOrg({ Navigation, route }) {
             style={styles.eventLogo}
             source={{ uri: route.params.Image }}
           />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Participants", route.params);
+            }}
+            style={{ alignItems: "flex-end", padding: 25 }}
+          >
+            <Text style={{ fontSize: 20, color: "red" }}>
+              participants ({route.params.participants.length}){" "}
+            </Text>
+          </TouchableOpacity>
           <View style={styles.baseText}>
             <Text style={styles.eventHeading}>{route.params.Title}</Text>
             <Text style={styles.eventGenre}>{route.params.Location}</Text>
