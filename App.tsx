@@ -15,6 +15,9 @@ import { Feather } from "@expo/vector-icons";
 
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerItems from "./Constants/constants";
+import Profile from "./app/screen/Profile";
+import CreateEvents from "./app/screen/CreateEvents";
+import EventDetails from "./app/screen/NestedPages/EventDetails";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -56,8 +59,8 @@ const MainScreen = () => {
             drawer.name === "HomePage"
               ? HomePage
               : drawer.name == "Profile"
-              ? Login
-              : WelcomeScreen
+              ? Profile
+              : CreateEvents
           }
         />
       ))}
@@ -85,11 +88,14 @@ export default function App() {
             <Stack.Screen name="Signup" component={Signup} />
           </>
         ) : (
-          <Stack.Screen
-            name="EventElevate"
-            component={MainScreen}
-            options={{ headerShown: false }}
-          />
+          <>
+            <Stack.Screen
+              name="EventElevate"
+              component={MainScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen name="EventDetails" component={EventDetails} />
+          </>
         )}
       </Stack.Navigator>
     </NavigationContainer>

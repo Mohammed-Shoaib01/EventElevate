@@ -128,8 +128,10 @@ export default function HomePage({ navigation }) {
               <CardAction separator={true} inColumn={false}>
                 <CardButton onPress={() => {}} title="Share" color="#FEB557" />
                 <CardButton
-                  onPress={() => {}}
-                  title="Register"
+                  onPress={() => {
+                    navigation.navigate("EventDetails", item);
+                  }}
+                  title="Details"
                   color="#FEB557"
                 />
               </CardAction>

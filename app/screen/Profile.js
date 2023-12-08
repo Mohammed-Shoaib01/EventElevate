@@ -19,24 +19,9 @@ export default function Profile() {
   let user = auth.currentUser;
   console.log(typeof user.displayName);
   const signoutFirebase = async () => {
-    const stopLocation = () => {
-      TaskManager.isTaskRegisteredAsync("location-tracking").then(
-        (tracking) => {
-          console.log("ending location tracking");
-          if (tracking) {
-            TaskManager.unregisterTaskAsync("location-tracking");
-            console.log("ended location tracking");
-          }
-        }
-      );
-    };
-    stopLocation();
     signOut(auth);
   };
-  onAuthStateChanged(auth, (newUser) => {
-    user = newUser;
-    console.log(newUser);
-  });
+
   useEffect(() => {
     async function fetchData() {
       const docRef = doc(FIREBASE_DB, "users", user.uid);
@@ -58,39 +43,26 @@ export default function Profile() {
           <Text style={styles.avatar}>ME</Text>
         </View>
         <View style={styles.nameContainer}>
-          <Text style={styles.name}>{user.displayName}</Text>
+          <Text style={styles.name}>{docSnapData.Name}</Text>
         </View>
         <View style={styles.infoContainer}>
-          <Text style={styles.infoLabel}>Phone:</Text>
+          <Text style={styles.infoLabel}>Phone Number:</Text>
           <Text style={styles.infoText}>{docSnapData.PhoneNumber}</Text>
         </View>
 
         <View style={styles.infoContainer}>
-          <Text style={styles.infoLabel}>Bio:</Text>
-          <Text style={styles.infoText}>Did not commit war crimes :)</Text>
+          <Text style={styles.infoLabel}>Email:</Text>
+          <Text style={styles.infoText}>{docSnapData.Email} </Text>
         </View>
         <View style={styles.infoContainer}>
           <Text style={styles.infoLabel}>Status:</Text>
-          <Text style={styles.infoText}>On the run</Text>
+          <Text style={styles.infoText}>Online</Text>
         </View>
         <View style={styles.infoContainer}>
           <TouchableOpacity onPress={signoutFirebase}>
             <Text style={styles.infoLabel}>signout</Text>
           </TouchableOpacity>
         </View>
-      </View>
-      <View style={styles.locationContainer}>
-        <Text style={styles.infoLabel}>Location:</Text>
-        <MapView
-          ref={(mapview) => {
-            this._mapview = mapview;
-          }}
-          showsUserLocation={true}
-          showsMyLocationButton={true}
-          style={styles.map}
-        ></MapView>
-
-        <Text style={styles.infoText}>Prison</Text>
       </View>
     </View>
   );
