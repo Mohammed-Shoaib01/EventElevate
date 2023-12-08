@@ -9,6 +9,7 @@ import { signOut } from "firebase/auth";
 
 import { FirebaseDB } from "../../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
+import QRCode from "react-native-qrcode-svg";
 
 const FIREBASE_DB = FirebaseDB;
 
@@ -62,6 +63,12 @@ export default function Profile() {
           <TouchableOpacity onPress={signoutFirebase}>
             <Text style={styles.infoLabel}>signout</Text>
           </TouchableOpacity>
+        </View>
+        <View style={styles.infoContainer}>
+        <QRCode
+          //QR code value
+          value={user.uid ? user.uid : 'NA'}
+          />
         </View>
       </View>
     </View>
