@@ -143,6 +143,24 @@ export default function Participants({ navigation, route }) {
           );
         }}
       />
+      <TouchableOpacity
+        style={{ flex: 0, alignSelf: "flex-start", margin: 20 }}
+        onPress={() => {
+          navigation.navigate("qrcode", {
+            Event: route.params,
+            participants: optionList,
+          });
+        }}
+      >
+        {/* button kek also why comments being weird here */}
+        <View
+          style={{ padding: 10, backgroundColor: "blue", borderRadius: 10 }}
+        >
+          <Text style={{ color: "white", fontWeight: "bold" }}>
+            scan qr code
+          </Text>
+        </View>
+      </TouchableOpacity>
     </ScrollView>
   );
 }

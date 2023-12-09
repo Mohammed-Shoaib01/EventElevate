@@ -27,6 +27,8 @@ import { LogBox } from "react-native";
 import EventForm from "./app/screen/NestedPages/EventForm";
 import EventDetailsOrg from "./app/screen/NestedPages/EventDetailsOrg";
 import Participants from "./app/screen/NestedPages/doubleNestedPages/Participants";
+import Qrcode from "./app/screen/NestedPages/doubleNestedPages/Qrcode";
+import Marked from "./app/screen/NestedPages/doubleNestedPages/Marked";
 LogBox.ignoreLogs(["Warning: ..."]); // Ignore log notification by message
 LogBox.ignoreAllLogs(); //Ignore all log notifications
 
@@ -117,6 +119,8 @@ export default function App() {
             <Stack.Screen name="EventForm" component={EventForm} />
             <Stack.Screen name="EventDetailsOrg" component={EventDetailsOrg} />
             <Stack.Screen name="Participants" component={Participants} />
+            <Stack.Screen name="qrcode" component={Qrcode} />
+            <Stack.Screen name="Marked" component={Marked} />
           </>
         )}
       </Stack.Navigator>

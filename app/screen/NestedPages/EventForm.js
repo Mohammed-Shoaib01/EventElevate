@@ -26,6 +26,8 @@ const EventForm = () => {
       Genre: genre,
       Location: location,
       Image: image,
+      participants: [],
+      verifiedParticipants: [],
     });
 
     const userRef = doc(FirebaseDB, "users", user.uid);
