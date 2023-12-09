@@ -135,11 +135,20 @@ export default function Participants({ navigation, route }) {
         }}
         renderItem={({ item }) => {
           return (
-            <View key={item.id} style={{ flexDirection: "row" }}>
-              <Text>Name: {item.Name} </Text>
-              <Text>Email: {item.Email} </Text>
-              <Text>Phone Number: {item.PhoneNumber} </Text>
-            </View>
+
+            
+                <Card key={item.id}>
+                  {/* <CardImage  source={{ uri: item.Name }} title={item.Email} /> */}
+                  <CardTitle style={{backgroundColor:'lightgrey'}}  subtitle={item.Name} />
+                  <CardTitle subtitle={item.Email} />
+                  <CardTitle subtitle={item.PhoneNumber} />
+                </Card>
+
+            // <View key={item.id} style={{ flexDirection: "row" }}>
+            //   <Text>Name: {item.Name} </Text>
+            //   <Text>Email: {item.Email} </Text>
+            //   <Text>Phone Number: {item.PhoneNumber} </Text>
+            // </View>
           );
         }}
       />
