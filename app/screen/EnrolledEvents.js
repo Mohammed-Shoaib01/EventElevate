@@ -25,7 +25,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { FirebaseAuth } from "../../firebaseConfig";
 import { getAuth } from "firebase/auth";
 
-export default function CreateEvents({ navigation }) {
+export default function EnrolledEvents({ navigation }) {
   let displayName = undefined;
   const auth = getAuth();
   let user = auth.currentUser;
@@ -102,6 +102,7 @@ export default function CreateEvents({ navigation }) {
         }
       }
       setOptionList(tempList);
+      console.log(optionList);
     }
     fetchEventsData();
   }, docSnapData);

@@ -26,7 +26,10 @@ function EventDetailsOrg({ navigation, route }) {
             style={{ alignItems: "flex-end", padding: 25 }}
           >
             <Text style={{ fontSize: 20, color: "red" }}>
-              participants ({route.params.participants.length}){" "}
+              participants (
+              {route.params.participants.length +
+                route.params.verifiedParticipants.length}
+              ){" "}
             </Text>
           </TouchableOpacity>
           <View style={styles.baseText}>

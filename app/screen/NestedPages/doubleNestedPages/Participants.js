@@ -32,9 +32,8 @@ export default function Participants({ navigation, route }) {
   let user = auth.currentUser;
   const [searchText, setSearchText] = useState();
   const [docSnapData, setdocSnapData] = useState(null);
-  const [optionList, setOptionList] = useState([
-    { Name: "...", email: "...", number: "..." },
-  ]);
+  const [optionList, setOptionList] = useState([]);
+  const [optionListpa, setOptionListpa] = useState([]);
   // const handleSearch = (text) => {
   //   setSearchText(text);
   // };
@@ -76,6 +75,7 @@ export default function Participants({ navigation, route }) {
     async function fetchEventsData() {
       // const querySnapshot = await getDocs(collection(FirebaseDB, "Events"));
       const tempList = [];
+      const tempList2 = [];
       // querySnapshot.forEach((doc) => {
       //   // doc.data() is never undefined for query doc snapshots
       //   console.log(doc.id, " => ", doc.data());
@@ -103,6 +103,27 @@ export default function Participants({ navigation, route }) {
         }
       }
       setOptionList(tempList);
+
+      for (let i = 0; i < docSnapData.verifiedParticipants.length; i++) {
+        console.log("inside the loop");
+        console.log(docSnapData.verifiedParticipants[i].trim());
+        const docRef = doc(
+          FirebaseDB,
+          "users",
+          docSnapData.verifiedParticipants[i].trim()
+        );
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          console.log("Document data Event:", docSnap.data());
+          const dict = docSnap.data();
+          dict["id"] = docSnapData.verifiedParticipants[i].trim();
+          tempList2.push(dict);
+        } else {
+          // docSnap.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      }
+      setOptionListpa(tempList2);
     }
     fetchEventsData();
   }, docSnapData);
@@ -128,30 +149,64 @@ export default function Participants({ navigation, route }) {
           />
         </View>
       </View>
-      <FlatList
-        data={searchFilteredData}
-        keyExtractor={(item) => {
-          return item.Title;
-        }}
-        renderItem={({ item }) => {
-          return (
+      {searchFilteredData == [] ? (
+        <></>
+      ) : (
+        <FlatList
+          data={searchFilteredData}
+          keyExtractor={(item) => {
+            return item.Title;
+          }}
+          renderItem={({ item }) => {
+            return (
+              <Card key={item.id}>
+                {/* <CardImage  source={{ uri: item.Name }} title={item.Email} /> */}
+                <CardTitle
+                  style={{ backgroundColor: "lightgrey" }}
+                  subtitle={item.Name}
+                />
+                <CardTitle subtitle={item.Email} />
+                <CardTitle subtitle={item.PhoneNumber} />
+              </Card>
 
-            
-                <Card key={item.id}>
-                  {/* <CardImage  source={{ uri: item.Name }} title={item.Email} /> */}
-                  <CardTitle style={{backgroundColor:'lightgrey'}}  subtitle={item.Name} />
-                  <CardTitle subtitle={item.Email} />
-                  <CardTitle subtitle={item.PhoneNumber} />
-                </Card>
+              // <View key={item.id} style={{ flexDirection: "row" }}>
+              //   <Text>Name: {item.Name} </Text>
+              //   <Text>Email: {item.Email} </Text>
+              //   <Text>Phone Number: {item.PhoneNumber} </Text>
+              // </View>
+            );
+          }}
+        />
+      )}
+      {optionListpa == [] ? (
+        <></>
+      ) : (
+        <FlatList
+          data={optionListpa}
+          keyExtractor={(item) => {
+            return item.Title;
+          }}
+          renderItem={({ item }) => {
+            return (
+              <Card key={item.id}>
+                {/* <CardImage  source={{ uri: item.Name }} title={item.Email} /> */}
+                <CardTitle
+                  style={{ backgroundColor: "green" }}
+                  subtitle={item.Name}
+                />
+                <CardTitle subtitle={item.Email} />
+                <CardTitle subtitle={item.PhoneNumber} />
+              </Card>
 
-            // <View key={item.id} style={{ flexDirection: "row" }}>
-            //   <Text>Name: {item.Name} </Text>
-            //   <Text>Email: {item.Email} </Text>
-            //   <Text>Phone Number: {item.PhoneNumber} </Text>
-            // </View>
-          );
-        }}
-      />
+              // <View key={item.id} style={{ flexDirection: "row" }}>
+              //   <Text>Name: {item.Name} </Text>
+              //   <Text>Email: {item.Email} </Text>
+              //   <Text>Phone Number: {item.PhoneNumber} </Text>
+              // </View>
+            );
+          }}
+        />
+      )}
       <TouchableOpacity
         style={{ flex: 0, alignSelf: "flex-start", margin: 20 }}
         onPress={() => {

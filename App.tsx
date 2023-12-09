@@ -82,7 +82,7 @@ const MainScreen = () => {
               ? HomePage
               : drawer.name == "Profile"
               ? Profile
-              : drawer.name == "EnrolledEvents"
+              : drawer.name == "Enrolled Events"
               ? EnrolledEvents
               : CreateEvents
           }
