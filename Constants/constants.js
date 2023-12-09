@@ -19,4 +19,9 @@ export default [
     iconType: "Material",
     iconName: "face-man-profile",
   },
+  {
+    name: "Enrolled Events",
+    iconType: "Material",
+    iconName: "face-man-profile",
+  },
 ];

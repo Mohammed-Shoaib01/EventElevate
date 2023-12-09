@@ -29,6 +29,7 @@ import EventDetailsOrg from "./app/screen/NestedPages/EventDetailsOrg";
 import Participants from "./app/screen/NestedPages/doubleNestedPages/Participants";
 import Qrcode from "./app/screen/NestedPages/doubleNestedPages/Qrcode";
 import Marked from "./app/screen/NestedPages/doubleNestedPages/Marked";
+import EnrolledEvents from "./app/screen/EnrolledEvents";
 LogBox.ignoreLogs(["Warning: ..."]); // Ignore log notification by message
 LogBox.ignoreAllLogs(); //Ignore all log notifications
 
@@ -81,6 +82,8 @@ const MainScreen = () => {
               ? HomePage
               : drawer.name == "Profile"
               ? Profile
+              : drawer.name == "EnrolledEvents"
+              ? EnrolledEvents
               : CreateEvents
           }
         />

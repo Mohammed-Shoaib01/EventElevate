@@ -25,6 +25,12 @@ function EventDetails({ Navigation, route }) {
     await updateDoc(userRef, {
       participants: arrayUnion(user.uid),
     });
+    const useraRef = doc(FirebaseDB, "users", user.uid);
+
+    await updateDoc(useraRef, {
+      EventsEnrolled: arrayUnion(id),
+    });
+
     Alert.alert("registered!");
   };
 
