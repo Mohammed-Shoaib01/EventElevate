@@ -63,31 +63,23 @@ npm start
 This command starts the Metro Bundler, which helps bundle your JavaScript files, and opens the Expo DevTools in your default web browser. You can then choose to run the app in an Android or iOS simulator, or on a physical device by scanning the QR code with the Expo Go app.
 
 ## Screenshots
-![WhatsApp Image 2024-02-17 at 9 06 59 PM](https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/a9094e8f-3db9-4329-8eb9-a0273724d538)
 
-![WhatsApp Image 2024-02-17 at 9 06 58 PM(1)](https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/d522b8c6-1b25-4bd8-8250-5035fecbbbe1)# 
+<div align="left">
+  <img src="https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/a9094e8f-3db9-4329-8eb9-a0273724d538" width="250">
+  <img src="https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/d522b8c6-1b25-4bd8-8250-5035fecbbbe1" width="250">
+  <img src="https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/a2d6c829-b640-4389-b1fa-cee1ef14c628" width="250">
+  <img src="https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/10791198-3969-4805-963e-8f9cf9f86097" width="250">
+  <img src="https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/176881a2-21c5-4e35-be0b-c799bbc99b58" width="250">
+  <img src="https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/77b9a41b-95e2-45f4-9af9-5122fb2d9781" width="250">
+  <img src="https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/997cc9f0-7a85-4710-967f-0c4207c1775e" width="250">
+  <img src="https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/1d8f625c-83d1-4403-960c-3ba8d2f512ac" width="250">
+  <img src="https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/5de94b03-b539-409b-a79b-aea93099a367" width="250">
+  <img src="https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/e756c406-87a0-448f-9664-760d4fe10bb2" width="250">
+  <img src="https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/eb7eb8fc-e327-4c79-936b-6988a14dce32" width="250">
+  <img src="https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/e0b267f4-c810-4590-925d-f619b9c5b076" width="250">
+  <img src="https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/306dd995-ca43-4ca8-bd9c-1afa524f3766" width="250">
 
-![WhatsApp Image 2024-02-17 at 9 06 58 PM](https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/a2d6c829-b640-4389-b1fa-cee1ef14c628)
-
-![WhatsApp Image 2024-02-17 at 9 06 55 PM](https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/10791198-3969-4805-963e-8f9cf9f86097)
-
-![WhatsApp Image 2024-02-17 at 9 06 56 PM](https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/176881a2-21c5-4e35-be0b-c799bbc99b58)
-
-![WhatsApp Image 2024-02-17 at 9 32 31 PM](https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/77b9a41b-95e2-45f4-9af9-5122fb2d9781)
-
-![WhatsApp Image 2024-02-17 at 9 32 31 PM (1)](https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/997cc9f0-7a85-4710-967f-0c4207c1775e)
-
-![WhatsApp Image 2024-02-17 at 9 32 32 PM](https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/1d8f625c-83d1-4403-960c-3ba8d2f512ac)
-
-![WhatsApp Image 2024-02-17 at 9 32 32 PM (1)](https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/5de94b03-b539-409b-a79b-aea93099a367)
-
-![WhatsApp Image 2024-02-17 at 9 32 33 PM](https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/e756c406-87a0-448f-9664-760d4fe10bb2)
-
-![WhatsApp Image 2024-02-17 at 9 32 33 PM (1)](https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/eb7eb8fc-e327-4c79-936b-6988a14dce32)
-
-![WhatsApp Image 2024-02-17 at 9 32 33 PM (2)](https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/e0b267f4-c810-4590-925d-f619b9c5b076)
-
-![WhatsApp Image 2024-02-17 at 9 32 33 PM (3)](https://github.com/Mohammed-Shoaib01/EventElevate/assets/73358222/306dd995-ca43-4ca8-bd9c-1afa524f3766)
+</div>
 
 ## Contributors!
 - [Mohammed Saad]([https://github.com/](https://github.com/b1gh3ro))
