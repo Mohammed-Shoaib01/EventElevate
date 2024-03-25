@@ -84,5 +84,6 @@ This command starts the Metro Bundler, which helps bundle your JavaScript files,
 ## Contributors!
 - [Mohammed Saad]([https://github.com/](https://github.com/b1gh3ro))
 - [Mohammed Shoaib](github.com/Mohammed-Shoaib01)
+- [Mohammed Saif](https://github.com/saifxyzyz)
 ## Acknowledgments
 Special thanks to Hitam Hack Your Path 5.0 Hackathon for organizing the event and providing the opportunity to develop this app.
